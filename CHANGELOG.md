@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.4.0
+
+### Minor Changes
+
+- add loop
+
 ## 0.3.0
 
 ### Minor Changes

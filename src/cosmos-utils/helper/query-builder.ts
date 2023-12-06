@@ -277,12 +277,28 @@ export const Q = (container: Container) => {
             builder.container(container)
                 .partition(partition)
             return {
-                id: async <T>(id: string) => { 
+                id: async <T>(id: string) => {
                     return await container.item(id, partition).read() as T
                 },
-                firstN: async (n: number, since: string) => {
-                    const reader = await builder?.greater("id", since).takeN(0, n).run()    
+                nextN: async (n: number, since: string) => {
+                    const reader = await builder?.greater("id", since)
+                        .orderBy("id", "ASC")
+                        .takeN(0, n).run()
                     return reader?.all()
+                },
+                batchN : async function *(n: number) {
+                    let lastId = ""
+                    while (true) {
+                        const reader = await builder?.greater("id", lastId)
+                            .orderBy("id", "ASC")
+                            .takeN(0, n).run() 
+                        const docs = reader?.all()
+                        if (docs && docs.length > 0) {
+                            yield docs
+                        } else {
+                            break
+                        }
+                    }
                 },
                 select: (...fields: string[]) => {
                     console.log(fields)
@@ -294,8 +310,9 @@ export const Q = (container: Container) => {
 
         },
         expire: {
-            
+
         }
     }
 }
+
 
