@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.1.0
+
+### Minor Changes
+
+- add the sql helper
+
 ## 0.0.2
 
 ### Patch Changes
