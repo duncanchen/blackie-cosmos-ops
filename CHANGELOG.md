@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.6.0
+
+### Minor Changes
+
+- fix the last value
+
 ## 0.5.0
 
 ### Minor Changes

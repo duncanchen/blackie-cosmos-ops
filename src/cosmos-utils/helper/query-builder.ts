@@ -297,6 +297,7 @@ export const Q = (container: Container) => {
                             .takeN(0, n).run()
                         const docs = reader?.all()
                         if (docs && docs.length > 0) {
+                            lastId = (docs[docs.length - 1] as any).id 
                             yield docs
                         } else {
                             break
