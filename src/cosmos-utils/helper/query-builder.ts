@@ -76,10 +76,6 @@ export class QueryBuilder {
         }
     }
 
-    partitionWith(partition: string) {
-        this._partition = partition
-        return this
-    }
 
     container(container: Container) {
         this._container = container

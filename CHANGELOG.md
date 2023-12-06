@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.2.1
+
+### Patch Changes
+
+- fix partition
+
 ## 0.2.0
 
 ### Minor Changes
