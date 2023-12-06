@@ -272,9 +272,28 @@ export class QueryBuilder {
     }
 }
 
-export const Q = (container: Container, partition: string) => {
-    const builder = new QueryBuilder()
-    builder.container(container)
-        .partitionWith(partition)
-    return builder
+
+export const Q = (container: Container) => {
+    let builder: QueryBuilder | undefined
+    return {
+        from: (partition: string) => {
+            builder = new QueryBuilder()
+            builder.container(container)
+                .partitionWith(partition)
+            return {
+                id: async <T>(id: string) => { 
+                    return await container.item(id, partition).read() as T
+                },
+                firstN: async (n: number, since: string) => {
+                    const reader = await builder?.greater("id", since).takeN(0, n).run()    
+                    return reader?.all()
+                },
+                select: (...fields: string[]) => {
+                    console.log(fields)
+                },
+                selectAll: () => { }
+            }
+        },
+    }
 }
+
