@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.5.0
+
+### Minor Changes
+
+- create builder dynamic
+
 ## 0.4.0
 
 ### Minor Changes

@@ -270,28 +270,31 @@ export class QueryBuilder {
 
 
 export const Q = (container: Container) => {
-    let builder: QueryBuilder | undefined
     return {
         from: (partition: string) => {
-            builder = new QueryBuilder()
-            builder.container(container)
-                .partition(partition)
+            function getBuilder() {
+                const bdr = new QueryBuilder()
+                    .container(container)
+                    .partition(partition)
+                return bdr
+            }
+            
             return {
                 id: async <T>(id: string) => {
                     return await container.item(id, partition).read() as T
                 },
                 nextN: async (n: number, since: string) => {
-                    const reader = await builder?.greater("id", since)
+                    const reader = await getBuilder().greater("id", since)
                         .orderBy("id", "ASC")
                         .takeN(0, n).run()
                     return reader?.all()
                 },
-                batchN : async function *(n: number) {
+                batchN: async function* (n: number) {
                     let lastId = ""
                     while (true) {
-                        const reader = await builder?.greater("id", lastId)
+                        const reader = await getBuilder().greater("id", lastId)
                             .orderBy("id", "ASC")
-                            .takeN(0, n).run() 
+                            .takeN(0, n).run()
                         const docs = reader?.all()
                         if (docs && docs.length > 0) {
                             yield docs
