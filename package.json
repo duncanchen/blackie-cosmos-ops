@@ -1,10 +1,14 @@
 {
-  "name": "blackie-pkg",
+  "name": "@blackie-ops/cosmosdb",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duncanchen/blackie-cosmos-ops.git"
+  },
   "scripts": {
     "build": "tsup index.ts --format cjs,esm --dts",
     "release": "pnpm run build && changeset publish",
