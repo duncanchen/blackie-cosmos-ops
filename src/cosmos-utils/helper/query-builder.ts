@@ -275,7 +275,7 @@ export const Q = (container: Container) => {
         from: (partition: string) => {
             builder = new QueryBuilder()
             builder.container(container)
-                .partitionWith(partition)
+                .partition(partition)
             return {
                 id: async <T>(id: string) => { 
                     return await container.item(id, partition).read() as T
@@ -290,6 +290,12 @@ export const Q = (container: Container) => {
                 selectAll: () => { }
             }
         },
+        upsert: {
+
+        },
+        expire: {
+            
+        }
     }
 }
 

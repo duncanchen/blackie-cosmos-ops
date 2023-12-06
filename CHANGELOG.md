@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.3.0
+
+### Minor Changes
+
+- start shaping the query
+
 ## 0.2.1
 
 ### Patch Changes
