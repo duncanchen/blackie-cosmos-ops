@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.7.0
+
+### Minor Changes
+
+- create looping function to loop an partition
+
 ## 0.6.0
 
 ### Minor Changes

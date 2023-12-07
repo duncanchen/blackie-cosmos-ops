@@ -289,21 +289,6 @@ export const Q = (container: Container) => {
                         .takeN(0, n).run()
                     return reader?.all()
                 },
-                batchN: async function* (n: number) {
-                    let lastId = ""
-                    while (true) {
-                        const reader = await getBuilder().greater("id", lastId)
-                            .orderBy("id", "ASC")
-                            .takeN(0, n).run()
-                        const docs = reader?.all()
-                        if (docs && docs.length > 0) {
-                            lastId = (docs[docs.length - 1] as any).id 
-                            yield docs
-                        } else {
-                            break
-                        }
-                    }
-                },
                 select: (...fields: string[]) => {
                     console.log(fields)
                 },
