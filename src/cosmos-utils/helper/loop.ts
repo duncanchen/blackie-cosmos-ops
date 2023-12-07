@@ -58,7 +58,7 @@ const HoseBatch = <T>(fn: HydrateFn<T>) => {
 
 
 
-
+// stepping will spit one item at a time 
 export const steppingWithinPartition = (container: Container, partition: string, batchSize = 100) => {
     const hydrate = async (count: number, instance: any) => {
         const { id = "" } = instance || {}
@@ -74,7 +74,7 @@ export const steppingWithinPartition = (container: Container, partition: string,
     return Hose(hydrate)
 }
 
-
+// paging will return a batch of items, each batch will be an array of items
 export const pagingWithinPartition = (container: Container, partition: string, batchSize = 100) => {
     const hydrate = async (count: number, instance: any) => {
         const { id = "" } = instance || {}
