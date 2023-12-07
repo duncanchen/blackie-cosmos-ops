@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.8.0
+
+### Minor Changes
+
+- 59a5ee3: add paging and stepping
+
 ## 0.7.1
 
 ### Patch Changes
