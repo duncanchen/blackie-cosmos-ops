@@ -1,3 +1,6 @@
+import { Container } from "@azure/cosmos";
+import { QueryBuilder } from "./query-builder";
+
 export type HydrateFn<T> = (
     executionNumber: number,
     lastInstance?: T,
@@ -27,3 +30,20 @@ const Hose = <T>(fn: HydrateFn<T>) => {
         }
     };
 };
+
+
+
+export const pagingWithinPartition = (container: Container, partition: string, batchSize = 100) => {
+    const hydrate = async (count: number, instance: any) => {
+        const { id = "" } = instance || {}
+        const reader = await new QueryBuilder()
+            .container(container)
+            .partition(partition)
+            .greater("id", id)
+            .orderBy("id", "ASC")
+            .takeN(0, batchSize)
+            .run()
+        return reader?.all()
+    }
+    return Hose(hydrate)
+}

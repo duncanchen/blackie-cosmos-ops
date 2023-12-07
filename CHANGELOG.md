@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.7.1
+
+### Patch Changes
+
+- fix the missing fuction
+
 ## 0.7.0
 
 ### Minor Changes
