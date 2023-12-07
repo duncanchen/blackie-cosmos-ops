@@ -1,5 +1,11 @@
 # @blackie-ops/cosmosdb
 
+## 0.8.1
+
+### Patch Changes
+
+- a7687c9: add comments
+
 ## 0.8.0
 
 ### Minor Changes
