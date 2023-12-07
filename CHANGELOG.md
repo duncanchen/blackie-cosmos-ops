@@ -1,6 +1,20 @@
 # @blackie-ops/cosmosdb
 
+<<<<<<< HEAD
 ## 0.8.1
+=======
+## 0.10.0
+
+### Minor Changes
+
+- add connect to db with default credential
+
+## 0.9.0
+
+### Minor Changes
+
+- fix bug in batch mode
+>>>>>>> 29cff9c (10)
 
 ### Patch Changes
 

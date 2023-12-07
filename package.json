@@ -1,7 +1,7 @@
 {
   "name": "@blackie-ops/cosmosdb",
   "license": "MIT",
-  "version": "0.8.1",
+  "version": "0.10.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@azure/cosmos": "^4.0.0",
+    "@azure/identity": "^4.0.0",
     "radash": "^11.0.0",
     "zod": "^3.22.4"
   }

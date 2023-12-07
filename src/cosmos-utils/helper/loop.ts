@@ -45,9 +45,7 @@ const HoseBatch = <T>(fn: HydrateFn<T>) => {
             current++;
         };
         while (true) {
-            if (collection.length === 0) {
-                await rehyDrate();
-            }
+            await rehyDrate();
             if (collection.length === 0) {
                 break;
             }
